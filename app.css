@@ -54,7 +54,8 @@ body{
   top:20px;
   left:20px;
   font-size: 2vw;
-  color: white;
+  color: rgba(0,0,0,0.3);
+  font-style: bold;
   text-transform: uppercase;
   letter-spacing: .2vw;
   /*background: red;*/
@@ -68,7 +69,7 @@ body{
 #container{
   /*background: green;*/
   margin: 0 auto;
-  /*border: 5px solid white;*/
+  border: 10px solid rgba(0,0,0,.2);
   text-align:center;
   margin-top: 10vh;
   width: 500px ;
