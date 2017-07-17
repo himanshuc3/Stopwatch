@@ -1,0 +1,101 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: 0;
+}
+
+body{
+  background:#BD9CDE;
+  font-family: "SIMPLIFICA Typeface";
+}
+
+@font-face{
+  src: url("SIMPLIFICA Typeface.ttf");
+  font-family: "SIMPLIFICA Typeface";
+}
+
+.magic{
+-webkit-animation-name: colorChanging;
+  -moz-animation-name: colorChanging;
+  -webkit-animation-duration: 5s;
+  -moz-animation-duration: 5s;
+  animation-name: colorChanging;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes colorChanging {  
+  /*0% {
+    background-color: #BB453E;
+  }*/
+  
+  20% {
+    background-color: #66CC85;
+  }
+  40% {
+    background-color: #020f75;
+  }
+  60% {
+    background-color: #c8699e;
+  }
+  80% {
+    background-color: #B4A83C;
+  }
+  100% {
+    background-color: #BD9CDE;
+  }
+}
+
+/*-------------uptop------------*/
+/*----------------------------------*/
+
+#uptop{
+  position:absolute;
+  top:20px;
+  left:20px;
+  font-size: 2vw;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: .2vw;
+  /*background: red;*/
+}
+
+
+
+/*-------------container------------*/
+/*----------------------------------*/
+
+#container{
+  /*background: green;*/
+  margin: 0 auto;
+  /*border: 5px solid white;*/
+  text-align:center;
+  margin-top: 10vh;
+  width: 500px ;
+  background: rgba(0,0,0,0.3);
+  height:500px;
+  border-radius: 50%;
+  
+}
+
+.stopwatch{
+  padding-top:100px;
+}
+
+.stopwatch-time{
+  font-size: 200px;
+  color: white;
+}
+
+.startstop{
+  border:none;
+  background:none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 3vw;
+  color:rgba(255,255,255,0.6);
+}
+
+.reset{
+  padding-left: 2vw;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+
+  <body id="whole">
+
+    <div id="uptop">Loading...</div>
+    <div id="container">Loading...</div>
+    <script src="./vendor/react.js"></script>
+    <script src="./vendor/react-dom.js"></script>
+    <script src="./vendor/babel-browser.min.js"></script>
+    <script type="text/babel">
+      
+
+var Stopwatch = React.createClass({
+  getInitialState: function() {
+    return {
+      running: false,
+      elapsedTime: 0,
+      previousTime: 0,
+    }
+  },
+  
+  componentDidMount: function() {
+    this.interval = setInterval(this.onTick, 100);
+  },
+  
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
+  
+  onTick: function() {
+    if (this.state.running) {
+      var now = Date.now();
+      this.setState({
+        previousTime: now,
+        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
+      });
+    }
+    console.log('onTick');
+  },
+  
+  onStart: function() {
+    this.setState({ 
+      running: true,
+      previousTime: Date.now(),
+    });
+    
+    var body = document.getElementById("whole");
+    body.className += "magic";
+
+  },
+  
+  onStop: function() {
+    this.setState({ running: false });
+    var body = document.getElementById("whole");
+    body.classList.remove("magic");
+  },
+  
+  onReset: function() {
+    this.setState({
+      elapsedTime: 0,
+      previousTime: Date.now(),
+    });
+    var body = document.getElementById("whole");
+    body.classList.remove("magic");
+  },
+  
+  render: function() {
+    var seconds = Math.floor(this.state.elapsedTime / 1000);
+    var minutes = Math.floor(seconds/60);
+    minutes = ("0" + minutes).slice(-2);
+    if(seconds>=60){
+      seconds -= 60;
+    }
+    seconds = ("0" + seconds).slice(-2);
+    return (
+      <div className="stopwatch">
+        <div className="stopwatch-time">{minutes}:{seconds}</div>
+        { this.state.running ? 
+          <button onClick={this.onStop} className="startstop">Stop</button> 
+          : 
+          <button onClick={this.onStart} className="startstop">Start</button>
+        } 
+        <button onClick={this.onReset} className="startstop reset">Reset</button>
+      </div>
+    );
+  }
+});
+ 
+
+var Text = React.createClass({
+  
+  render:function(){
+    return(
+      <h1>Stopwatch</h1>
+    );
+  }
+
+
+
+});
+
+ReactDOM.render(<Text/>, document.getElementById('uptop'));
+
+ReactDOM.render(<Stopwatch/>, document.getElementById('container'));
+    </script>
+  </body>
+</html>
